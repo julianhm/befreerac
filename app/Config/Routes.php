@@ -5,6 +5,12 @@ namespace Config;
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
+// Load the system's routing file first, so that the app and ENVIRONMENT
+// can override as needed.
+if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
+    require SYSTEMPATH . 'Config/Routes.php';
+}
+
 /*
  * --------------------------------------------------------------------
  * Router Setup
@@ -30,6 +36,21 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/category', 'CategoryController::index');
+$routes->get('/office', 'OfficeController::index');
+$routes->get('/listproduct', 'ListProductController::index');
+$routes->get('/about', 'AboutController::index');
+$routes->get('/checkout', 'CheckoutController::index');
+$routes->get('/contact', 'ContactController::index');
+$routes->get('/faqs', 'FaqsController::index');
+$routes->get('/help', 'HelpController::index');
+$routes->get('/payment', 'PaymentController::index');
+$routes->get('/privacy', 'PrivacyController::index');
+$routes->get('/product', 'ProductController::index');
+$routes->get('/single', 'SingleController::index');
+$routes->get('/terms', 'TermsController::index');
+$routes->get('/login', 'Home::login');
+$routes->get('/create', 'Home::create');
 
 /*
  * --------------------------------------------------------------------

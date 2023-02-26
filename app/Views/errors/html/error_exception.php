@@ -1,9 +1,4 @@
-<?php
-use Config\Services;
-use CodeIgniter\CodeIgniter;
-
-$errorId = uniqid('error', true);
-?>
+<?php $error_id = uniqid('error', true); ?>
 <!doctype html>
 <html>
 <head>
@@ -11,11 +6,11 @@ $errorId = uniqid('error', true);
     <meta name="robots" content="noindex">
 
     <title><?= esc($title) ?></title>
-    <style>
+    <style type="text/css">
         <?= preg_replace('#[\r\n\t ]+#', ' ', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.css')) ?>
     </style>
 
-    <script>
+    <script type="text/javascript">
         <?= file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'debug.js') ?>
     </script>
 </head>
@@ -82,16 +77,16 @@ $errorId = uniqid('error', true);
                             <?php if (isset($row['class'])) : ?>
                                 &nbsp;&nbsp;&mdash;&nbsp;&nbsp;<?= esc($row['class'] . $row['type'] . $row['function']) ?>
                                 <?php if (! empty($row['args'])) : ?>
-                                    <?php $argsId = $errorId . 'args' . $index ?>
-                                    ( <a href="#" onclick="return toggle('<?= esc($argsId, 'attr') ?>');">arguments</a> )
-                                    <div class="args" id="<?= esc($argsId, 'attr') ?>">
+                                    <?php $args_id = $error_id . 'args' . $index ?>
+                                    ( <a href="#" onclick="return toggle('<?= esc($args_id, 'attr') ?>');">arguments</a> )
+                                    <div class="args" id="<?= esc($args_id, 'attr') ?>">
                                         <table cellspacing="0">
 
                                         <?php
                                         $params = null;
                                         // Reflection by name is not available for closure function
                                         if (substr($row['function'], -1) !== '}') {
-                                            $mirror = isset($row['class']) ? new ReflectionMethod($row['class'], $row['function']) : new ReflectionFunction($row['function']);
+                                            $mirror = isset($row['class']) ? new \ReflectionMethod($row['class'], $row['function']) : new \ReflectionFunction($row['function']);
                                             $params = $mirror->getParameters();
                                         }
 
@@ -194,7 +189,7 @@ $errorId = uniqid('error', true);
 
             <!-- Request -->
             <div class="content" id="request">
-                <?php $request = Services::request(); ?>
+                <?php $request = \Config\Services::request(); ?>
 
                 <table>
                     <tbody>
@@ -288,11 +283,21 @@ $errorId = uniqid('error', true);
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($headers as $header) : ?>
-                            <tr>
-                                <td><?= esc($header->getName(), 'html') ?></td>
-                                <td><?= esc($header->getValueLine(), 'html') ?></td>
-                            </tr>
+                        <?php foreach ($headers as $value) : ?>
+                            <?php
+                            if (empty($value)) {
+                                continue;
+                            }
+
+                            if (! is_array($value)) {
+                                $value = [$value];
+                            } ?>
+                            <?php foreach ($value as $h) : ?>
+                                <tr>
+                                    <td><?= esc($h->getName(), 'html') ?></td>
+                                    <td><?= esc($h->getValueLine(), 'html') ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                         <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -302,7 +307,7 @@ $errorId = uniqid('error', true);
 
             <!-- Response -->
             <?php
-                $response = Services::response();
+                $response = \Config\Services::response();
                 $response->setStatusCode(http_response_code());
             ?>
             <div class="content" id="response">
@@ -327,7 +332,7 @@ $errorId = uniqid('error', true);
                             </tr>
                         </thead>
                         <tbody>
-                        <?php foreach (array_keys($headers) as $name) : ?>
+                        <?php foreach ($headers as $name => $value) : ?>
                             <tr>
                                 <td><?= esc($name, 'html') ?></td>
                                 <td><?= esc($response->getHeaderLine($name), 'html') ?></td>
@@ -382,7 +387,7 @@ $errorId = uniqid('error', true);
             <p>
                 Displayed at <?= esc(date('H:i:sa')) ?> &mdash;
                 PHP: <?= esc(PHP_VERSION) ?>  &mdash;
-                CodeIgniter: <?= esc(CodeIgniter::CI_VERSION) ?>
+                CodeIgniter: <?= esc(\CodeIgniter\CodeIgniter::CI_VERSION) ?>
             </p>
 
         </div>

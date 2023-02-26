@@ -21,21 +21,27 @@ class ContentSecurityPolicy extends BaseConfig
 
     /**
      * Default CSP report context
+     *
+     * @var bool
      */
-    public bool $reportOnly = false;
+    public $reportOnly = false;
 
     /**
      * Specifies a URL where a browser will send reports
      * when a content security policy is violated.
+     *
+     * @var string|null
      */
-    public ?string $reportURI = null;
+    public $reportURI;
 
     /**
      * Instructs user agents to rewrite URL schemes, changing
      * HTTP to HTTPS. This directive is for websites with
      * large numbers of old URLs that need to be rewritten.
+     *
+     * @var bool
      */
-    public bool $upgradeInsecureRequests = false;
+    public $upgradeInsecureRequests = false;
 
     // -------------------------------------------------------------------------
     // Sources allowed
@@ -161,16 +167,22 @@ class ContentSecurityPolicy extends BaseConfig
 
     /**
      * Nonce tag for style
+     *
+     * @var string
      */
-    public string $styleNonceTag = '{csp-style-nonce}';
+    public $styleNonceTag = '{csp-style-nonce}';
 
     /**
      * Nonce tag for script
+     *
+     * @var string
      */
-    public string $scriptNonceTag = '{csp-script-nonce}';
+    public $scriptNonceTag = '{csp-script-nonce}';
 
     /**
      * Replace nonce tag automatically
+     *
+     * @var bool
      */
-    public bool $autoNonce = true;
+    public $autoNonce = true;
 }

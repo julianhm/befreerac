@@ -20,8 +20,10 @@ class Mimes
 {
     /**
      * Map of extensions to mime types.
+     *
+     * @var array
      */
-    public static array $mimes = [
+    public static $mimes = [
         'hqx' => [
             'application/mac-binhex40',
             'application/mac-binhex',
@@ -53,8 +55,6 @@ class Mimes
         'lzh' => 'application/octet-stream',
         'exe' => [
             'application/octet-stream',
-            'application/vnd.microsoft.portable-executable',
-            'application/x-dosexec',
             'application/x-msdownload',
         ],
         'class' => 'application/octet-stream',
