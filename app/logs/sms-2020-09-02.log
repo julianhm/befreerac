@@ -1,0 +1,1 @@
+[2020-09-02 15:27:12] SMS.ERROR: Twilio response {"error":"Client error: `POST https://api.twilio.com/2010-04-01/Accounts/ACbf30ddefe1c004504cef438f94549b89/Messages.json` resulted in a `400 BAD REQUEST` response:\n{\"code\": 21602, \"message\": \"Message body is required.\", \"more_info\": \"https://www.twilio.com/docs/errors/21602\", \"status (truncated...)\n"} []
