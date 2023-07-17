@@ -14,7 +14,7 @@
                                 <?= $this->sma->decode_html($page->body); ?>
                                 <?php
                                 if ($page->slug == $shop_settings->contact_link) {
-                                    echo '<p><button type="button" class="btn btn-primary email-modal">Send us email</button></p>';
+                                    echo '<p><button type="button" class="btn btn-primary email-modal">'. lang('send_us_email') .'</button></p>';
                                 }
                                 ?>
                             </div>

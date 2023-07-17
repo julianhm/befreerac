@@ -78,6 +78,24 @@ class Shop extends MY_Shop_Controller
         $this->page_construct('pages/addresses', $this->data);
     }
 
+    // Customer office
+    public function office()
+    {
+        if (!$this->loggedIn) {
+            redirect('login');
+        }
+        if ($this->Staff) {
+            admin_redirect('customers');
+        }
+
+        $this->data['featured_products'] = $this->shop_model->getFeaturedProducts();
+        $this->data['customer']          = $this->site->getCompanyByID($this->session->userdata('company_id'));
+        $this->data['referrals']         = $this->site->getReferrals();
+        $this->data['page_title']        = lang('office');
+        $this->data['page_desc']         = '';
+        $this->page_construct('pages/office', $this->data);
+    }
+
     // Digital products download
     public function downloads($id = null, $hash = null)
     {

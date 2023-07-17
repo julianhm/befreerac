@@ -861,6 +861,50 @@ class Site extends CI_Model
         return false;
     }
 
+
+    public function getReferrals($id = null)
+    {
+        if (!$id) {
+            $id = $this->session->userdata('user_id');
+        }
+        
+        $this->db->select('users_plan_compe.referido_id, users_plan_compe.plan_comp_id, users.t_vcp as t_vcp, users.t_vcg as t_vcg, users_plan_compe.invited_by')
+        ->join('users', 'users.id=users_plan_compe.invited_by', 'left');
+                    
+        $q = $this->db->get_where('users_plan_compe', ['user_id' => $id]);
+
+        if ($q->num_rows() > 0) {
+            foreach (($q->result()) as $row) {
+                
+                $row->referido_id = $this->getUserNamebyID($row->referido_id);
+                $row->invited_by = $this->getUserNamebyID($row->invited_by);
+                /*
+                print "<pre>";
+                print_r($row);
+                print "</pre>";
+                */
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+    }
+
+    public function getUserNamebyID($id = null)
+    {
+        if (!$id) {
+            $id = $this->session->userdata('user_id');
+        }
+        $this->db->select('users.first_name, users.last_name');
+        $q = $this->db->get_where('users', ['id' => $id], 1);
+        if ($q->num_rows() > 0) {
+            return $q->row()->first_name . ' ' . $q->row()->last_name;
+        }
+        return false;
+    }
+
+    
+
     public function getUserGroup($user_id = false)
     {
         if (!$user_id) {

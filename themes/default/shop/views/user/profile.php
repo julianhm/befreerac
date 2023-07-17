@@ -8,12 +8,87 @@
                     <div class="col-sm-9 col-md-10">
 
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#user" aria-controls="user" role="tab" data-toggle="tab"><?= lang('details'); ?></a></li>
+                            <li role="presentation" class="active"><a href="#membership" aria-controls="membership" role="tab" data-toggle="tab"><?= lang('membership'); ?></a></li>
+                            <li role="presentation" ><a href="#user" aria-controls="user" role="tab" data-toggle="tab"><?= lang('details'); ?></a></li>
                             <li role="presentation"><a href="#password" aria-controls="password" role="tab" data-toggle="tab"><?= lang('change_password'); ?></a></li>
                         </ul>
 
                         <div class="tab-content padding-lg white bordered-light" style="margin-top:-1px;">
-                            <div role="tabpanel" class="tab-pane fade in active" id="user">
+
+                            <div role="tabpanel" class="tab-pane fade in active" id="membership">
+                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <div class="panel-body">
+
+                                            <div class="panel-heading text-bold">
+                                                Mis Bonos
+                                            </div>
+
+                                            <div style="background-color: #f5f5f5;border: 1px solid #e3e3e3;padding: 19px;">
+                                                
+                                                <div style="font-weight: 700;">
+                                                    Su nivel de Bonos ahora es: 
+                                                    <span style="line-height: 24px;color: #950b04;padding: 0 8px;cursor: pointer;text-align: center;display: inline-block;">Rubí</span>
+                                                    <img class="img-responsive" style="width: 4%;float: right;" src="<?= $assets; ?>/images/nivel-rubi.png" alt="Rubí">
+                                                </div>
+
+                                            </div>
+
+                                            <div style="background-color: #f5f5f5;border: 1px solid #e3e3e3;padding: 19px;margin-top: 20px;">
+                                    
+                                                <div style="font-weight: 700;">
+                                                    Su comision actual es de:   
+                                                    <span style="line-height: 24px;color: #950b04;padding: 0 8px;cursor: pointer;text-align: center;display: inline-block;">$630.000</span>
+                                                </div>
+                                                <br>
+                                                <div style="font-weight: 700;">
+                                                    Niveles y beneficios
+                                                </div>
+                                                <br>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                        <th scope="col">Bono</th>
+                                                        <th scope="col">comision</th>
+                                                        <th scope="col">% de entrega</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                        <td>Rubí</td>
+                                                        <td>$500.000</td>
+                                                        <td>10%</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>Zafiro</td>
+                                                        <td>$1’000.000</td>
+                                                        <td>10%</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>Esmeralda</td>
+                                                        <td>$2’000.000 </td>
+                                                        <td>10%</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>Diamante</td>
+                                                        <td>$5’000.000 </td>
+                                                        <td>10%</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <br>
+                                                                                    
+                                            </div>
+
+                                        </div>                                       
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane fade " id="user">
 
                                 <p><?= lang('fill_form'); ?></p>
                                 <?= form_open('profile/user', 'class="validate"'); ?>

@@ -25,6 +25,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12">
+                            
                         <?php
                         if (!empty($pages)) {
                             echo '<ul class="list-inline nav pull-left hidden-xs">';
@@ -43,6 +44,9 @@
                                 }
                                 ?>
                                 <?= $loggedIn && $Staff ? '<li class="hidden-xs"><a href="' . admin_url() . '"><i class="fa fa-dashboard"></i> ' . lang('admin_area') . '</a></li>' : ''; ?>
+                                
+                                
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <img src="<?= base_url('assets/images/' . $Settings->user_language . '.png'); ?>" alt="">
@@ -86,6 +90,25 @@
                                     ?>
                                     <?php if (!$shop_settings->hide_price) {
                                         ?>
+
+                                <!-- Minimum Purchase Bar -->
+                                
+                                    <li>
+                                    <a href="<?= site_url('office'); ?>"><span>Compra mínima</span> <span class="hidden-xs">
+                                     
+                                    <div class="progress" style="margin-bottom: 0px;margin-top: 0px;width: 150px;height: 15px;display: inline-flex;">
+                                        <?php
+                                            echo ' <div class="progress-bar progress-bar-success" style="width: ' . (($loggedInUser->progress_cm)*100) . '%;line-height: 15px;">' . (($loggedInUser->progress_cm)*100) .'%</div>';
+                                        ?> 
+                                    </div>    
+
+                                    </span> </a>
+                                        
+                                        
+                                    </li>
+
+
+                                        <!-- Wishlist original-->
                                     <li><a href="<?= shop_url('wishlist'); ?>"><i class="fa fa-heart"></i> <span class="hidden-xs"><?= lang('wishlist'); ?></span> (<span id="total-wishlist"><?= $wishlist; ?></span>)</a></li>
                                     <?php
                                     } ?>

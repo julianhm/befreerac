@@ -207,6 +207,7 @@ $(document).ready(function ($) {
   });
 });
 </script>
+
 <?php
     } ?>
 <script type="text/javascript">

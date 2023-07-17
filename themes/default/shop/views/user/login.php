@@ -61,10 +61,18 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!--
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <?= lang('company', 'company'); ?>
-                                            <?= form_input('company', set_value('company'), 'class="form-control tip" id="company"'); ?>
+                                            <= lang('company', 'company'); ?>
+                                            <= form_input('company', set_value('company'), 'class="form-control tip" id="company" placeholder="Opcional"'); ?>
+                                        </div>
+                                    </div>
+                                    -->
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <?= lang('referral_code', 'referral_code'); ?>
+                                            <?= form_input('referral_code', set_value('referral_code'), 'class="form-control tip" id="referral_code" placeholder="xxxxxx" required="required"'); ?>                                            
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -107,13 +115,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <?= lang('referral_code', 'company'); ?>
-                                            
-                                            <input class="form-control" type="text" value="xxxxx" name="Name" required="">
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="clearfix"></div>
                                 </div>

@@ -28,12 +28,12 @@ $route['cart/(:any)/(:any)'] = 'shop/cart_ajax/$1/$2';
 $route['shop/(:any)']               = 'shop/shop/$1';
 $route['shop/(:any)/(:any)']        = 'shop/shop/$1/$2';
 $route['shop/(:any)/(:any)/(:any)'] = 'shop/shop/$1/$2/$3';
+$route['office']                    = 'shop/shop/office';
 
 // Auth routes
 $route['login']                  = 'main/login';
 $route['logout']                 = 'main/logout';
 $route['profile']                = 'main/profile';
-$route['office']                = 'main/office';
 $route['register']               = 'main/register';
 $route['login/(:any)']           = 'main/login/$1';
 $route['logout/(:any)']          = 'main/logout/$1';

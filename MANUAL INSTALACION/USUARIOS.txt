@@ -1,4 +1,6 @@
 
-Username: tusolutionweb@gmail.com
-
+Username: admin o admin@gmail.com
 Password: 12345678
+
+Username: usuario1 o usuario1@gmail.com
+Password: Usuario1

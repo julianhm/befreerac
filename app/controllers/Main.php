@@ -297,24 +297,16 @@ class Main extends MY_Shop_Controller
         $this->page_construct('user/profile', $this->data);
     }
 
-    public function office()
-    {
-        $this->data['featured_products'] = $this->shop_model->getFeaturedProducts();
-        $this->data['customer']          = $this->site->getCompanyByID($this->session->userdata('company_id'));
-        $this->data['user']              = $this->site->getUser();
-        $this->data['page_title']        = lang('office');
-        $this->data['page_desc']         = $this->shop_settings->description;
-        $this->page_construct('user/office', $this->data);
-    }
-
     public function register()
     {
         if ($this->shop_settings->private) {
             redirect('/login');
         }
+        
         $this->form_validation->set_rules('first_name', lang('first_name'), 'required');
         $this->form_validation->set_rules('last_name', lang('last_name'), 'required');
         $this->form_validation->set_rules('phone', lang('phone'), 'required');
+        $this->form_validation->set_rules('referral_code', lang('referral_code'), 'required');
         $this->form_validation->set_rules('email', lang('email_address'), 'required|is_unique[users.email]');
         $this->form_validation->set_rules('username', lang('username'), 'required|is_unique[users.username]');
         $this->form_validation->set_rules('password', lang('password'), 'required|min_length[8]|max_length[20]|matches[password_confirm]');
@@ -348,6 +340,7 @@ class Main extends MY_Shop_Controller
                 'last_name'  => $this->input->post('last_name'),
                 'phone'      => $this->input->post('phone'),
                 'company'    => $this->input->post('company'),
+                'referral_code'    => $this->input->post('referral_code'),
                 'gender'     => 'male',
                 'company_id' => $company_id,
                 'group_id'   => 3,
@@ -442,4 +435,8 @@ class Main extends MY_Shop_Controller
             redirect('/');
         }
     }
+
+
+
+
 }
